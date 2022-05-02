@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Projects Information</title>
+        <style>
+            #container {
+                width: 80%;
+                margin: 10px auto;
+            }
+            .user {
+                float: right;
+                margin-right: 10px;
+            }
+            .user>a {
+                margin-right: 10px;
+            }
+            #main>dl>dt {
+                font-size: 1.5em;
+                font-weight: bold;
+            }
+            #main>dl>dd {
+                font-size: 1.2em;
+            }
+            a {
+                text-decoration: none;
+                color: darkcyan;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div class="user">
+                <a href="login.html">Login</a>
+                <a href="register.html">Register</a>
+            </div>
+            <h1>All projects</h1>
+            <hr>
+            <div id="main">
+                {% for project in projects %}
+                <dl>
+                    <dt>
+                        <a href="/managers/?proj_id={{ project.id }}">{{ project.name }}</a>
+                        {% if subject.is_good %}
+                        <img src="/static/images/good-icon-small.png">
+                        {% endif %}
+                    </dt>
+                    <dd>{{ project.desc }}</dd>
+                </dl>
+                {% endfor %}
+            </div>
+        </div>
+    </body>
+</html>
